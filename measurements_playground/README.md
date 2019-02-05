@@ -27,11 +27,23 @@ python3 -m pip install paho-mqtt --user
 ```
 
 ## Użycie
-1. Przejdź do katalogu zawierającego skrypt i uruchom go poleceniem
+1. Będąc w tym (`measurements_playground`) katalogu polecam najpierw stworzyć virtual enva:
 ```bash
-python3 test_subscribe.py
+sudo apt install python3-venv
+python3 -m venv .venv
+source .venv/bin/activate
 ```
-2. Będąc na malinie, uruchom skrypt `send.py`
+2. Następnie ściągamy Django i paho-mqtt
+```bash
+python -m pip install django paho-mqtt
+```
+3. I odpalamy server
+```bash
+cd server/backend
+python manage.py runserver --noreload
+```
+4. Następnie uruchamiamy na malince skrypt do wysyłania wyników pomiarów
 ```bash
 python3 send.py
 ```
+To już koniec! Nasze pomiary (czytane z bazy danych) możemy zobaczyć, logując się w przeglądarce pod linkiem `127.0.0.1:8000/admin` loginem `admin` i hasłem `smartcity`. Następnie klikamy w **Measurements** i odświeżając stronę oglądamy napływające pomiary
