@@ -1,0 +1,11 @@
+[Unit]
+Description=the best app ever
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=pi
+ExecStart=/home/pi/measure_app/send.sh
+
+[Install]
+WantedBy=multi-user.target
